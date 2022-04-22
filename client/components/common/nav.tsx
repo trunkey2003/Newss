@@ -1,5 +1,7 @@
-import { Box, Modal, Typography } from '@mui/material'
-import { useState } from 'react'
+import Link from 'next/link';
+import { useEffect, useState } from 'react'
+import SignInModal from './signInModal';
+import SignUpModal from './signUpModal';
 
 type Props = {}
 
@@ -20,6 +22,24 @@ export default function Nav({ }: Props) {
   const [showSignUp, setShowSignUp] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
   const [subNavOpen, setSubNavOpen] = useState(false);
+  const [userName, setUsername] = useState('');
+
+  const readCookieAsObject: any = (cookie: string) => {
+    const cookieArr: string[] = cookie.split(';');
+    const keyArr = cookieArr.map((element) => element.substring(0, element.indexOf('=')));
+    const valueArr = cookieArr.map((element) => element.substring(element.indexOf('=') + 1, element.length));
+    const cookieObj: any = {};
+    for (var i = 0; i < cookieArr.length; i++) {
+      cookieObj[keyArr[i]] = valueArr[i];
+    }
+    if (cookieObj.role) cookieObj.role = Number(cookieObj.role);
+    return cookieObj;
+  }
+
+  useEffect(() => {
+    const cookieClient = readCookieAsObject(document.cookie);
+    setUsername(cookieClient.userName);
+  }, [])
 
   const handleShowSignUp = (bl: boolean) => {
     setShowSignUp(bl);
@@ -30,15 +50,16 @@ export default function Nav({ }: Props) {
   }
 
 
+
   return (
     <div className="relative bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <a href="#">
-              <span className="sr-only">Workflow</span>
-              <img className="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="" />
-            </a>
+            <Link href='/'>
+              {/* <span className="sr-only">Workflow</span> */}
+              <img className="h-8 w-auto sm:h-10 hover:cursor-pointer" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="" />
+            </Link>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
             <button type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
@@ -133,8 +154,13 @@ export default function Nav({ }: Props) {
               </div>
             </div>
 
-            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900"> Pricing </a>
-            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900"> Docs </a>
+            <Link href="/admin/ho-so/">
+              <a className="text-base font-medium text-gray-500 hover:text-gray-900 hover:cursor-pointer">Profile</a>
+            </Link>
+
+            <Link href="/admin/ho-so/tao-ho-so">
+              <a className="text-base font-medium text-gray-500 hover:text-gray-900 hover:cursor-pointer">Add Profile</a>
+            </Link>
 
             <div className="relative">
               <button type="button" className="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-expanded="false">
@@ -211,10 +237,13 @@ export default function Nav({ }: Props) {
               </div>
             </div>
           </nav>
+          {userName ? 
+          <div className='font-medium text-gray-900'>Xin chào {userName}</div> 
+          : 
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             <button onClick={() => handleShowSignIn(true)} className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"> Sign in </button>
             <button onClick={() => handleShowSignUp(true)} className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Sign up </button>
-          </div>
+          </div>}
         </div>
       </div>
       <div className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden hidden">
@@ -297,111 +326,8 @@ export default function Nav({ }: Props) {
         </div>
       </div>
 
-      <Modal
-        open={showSignUp}
-        onClose={() => handleShowSignUp(false)}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <form className="w-full max-w-sm">
-            <div className="md:flex md:items-center mb-6">
-              <div className="md:w-1/3">
-                <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                  Full Name
-                </label>
-              </div>
-              <div className="md:w-2/3">
-                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value="Jane Doe" />
-              </div>
-            </div>
-            <div className="md:flex md:items-center mb-6">
-              <div className="md:w-1/3">
-                <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                  Password
-                </label>
-              </div>
-              <div className="md:w-2/3">
-                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="password" placeholder="******************" />
-              </div>
-            </div>
-            <div className="md:flex md:items-center mb-6">
-              <div className="md:w-1/3">
-                <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                  Confirm Password
-                </label>
-              </div>
-              <div className="md:w-2/3">
-                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="password" placeholder="******************" />
-              </div>
-            </div>
-            <div className="md:flex md:items-center mb-6">
-              <label className="md:w-2/3 ml-[10%] block text-gray-500 font-bold">
-                <input className="mr-2 leading-tight" type="checkbox" />
-                <span className="text-sm">
-                  Auto login after sign up
-                </span>
-              </label>
-            </div>
-            <div className="md:flex md:items-center">
-              <div className="md:w-1/3"></div>
-              <div className="md:w-2/3">
-                <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-                  Sign Up
-                </button>
-              </div>
-            </div>
-          </form>
-        </Box>
-      </Modal>
-
-      <Modal
-        open={showSignIn}
-        onClose={() => handleShowSignIn(false)}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <form className="w-full max-w-sm">
-            <div className="md:flex md:items-center mb-6">
-              <div className="md:w-1/3">
-                <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                  Full Name
-                </label>
-              </div>
-              <div className="md:w-2/3">
-                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value="Jane Doe" />
-              </div>
-            </div>
-            <div className="md:flex md:items-center mb-6">
-              <div className="md:w-1/3">
-                <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                  Password
-                </label>
-              </div>
-              <div className="md:w-2/3">
-                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="password" placeholder="******************" />
-              </div>
-            </div>
-            <div className="md:flex md:items-center mb-6">
-              <label className="md:w-2/3 ml-[10%] block text-gray-500 font-bold">
-                <input className="mr-2 leading-tight" type="checkbox" />
-                <span className="text-sm">
-                  Auto Login
-                </span>
-              </label>
-            </div>
-            <div className="md:flex md:items-center">
-              <div className="md:w-1/3"></div>
-              <div className="md:w-2/3">
-                <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-                  Sign In
-                </button>
-              </div>
-            </div>
-          </form>
-        </Box>
-      </Modal>
+      <SignUpModal showSignUp={showSignUp} handleShowSignUp={handleShowSignUp} />
+      <SignInModal showSignIn={showSignIn} handleShowSignIn={handleShowSignIn} />
     </div>
   )
 }

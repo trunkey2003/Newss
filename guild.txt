@@ -1,0 +1,4 @@
+Tạo hồ sơ: /ho-so/tao-ho-so
+Xem tất cả hồ sơ admin: /ho-so
+Xem hồ sơ txt: /api/ho-so/[id-ho-so] vd: http://localhost:3000/api/ho-so/213321
+Xem hồ sơ admin: /hoso/[id-ho-so]

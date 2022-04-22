@@ -1,15 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 type Props = {}
 
-type State = {}
-
-export default class index extends Component<Props, State> {
-  state = {}
-
-  render() {
-    return (
-      <div>index</div>
-    )
-  }
+export default function Index({}: Props) {
+  return (
+    <div>Index</div>
+  )
 }

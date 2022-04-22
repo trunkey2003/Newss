@@ -1,7 +1,7 @@
 body {
   padding: 50px;
   font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url("https://trunkey2003.github.io/img/backgroundvn.jpg");
+  background-image: url('/bg.jpg');
   background-repeat: repeat;
 }
 

@@ -8,9 +8,9 @@ async function connect() {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
-    console.log("Succesfully connect to troviet database");
+    console.log(`Succesfully connect to ${process.env.DATABASE_NAME} database`);
   } catch (error) {
-    console.log(`Fail to connect to MongoDB - database : ${process.env.DATABASE_USERNAME}`);
+    console.log(`Fail to connect to MongoDB - database : ${process.env.DATABASE_NAME}`);
   }
 }
 
