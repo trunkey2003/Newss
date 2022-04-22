@@ -10,7 +10,7 @@ class authController{
                 const valid = await bcrypt.compare(password, user.password);
                 if (valid) { 
                     res.locals._id = user._id;
-                    res.locals.role = user.role; 
+                    //Tạm thời cookie role không cần thiết mấy vì server đang authorize admin bằng cách kiểm tra database
                     res.locals.userName = user.userName;
                     next(); 
                 } 
@@ -56,6 +56,20 @@ class authController{
             res.locals.user = user;
             next();
         })
+    }
+
+    //verify admin dựa trên database bất chấp hiệu năng :)
+    verifyAdmin(req, res, next){
+        users.findOne({ _id: res.locals.user._id })
+            .then((user) => {
+                if (!user) res.status(404); //user xóa tk hoặc thay đổi _id trên db
+                if (user.role == 0) res.status(200).send(true);
+                if (user.role != 0) res.status(403).send(false);
+            })
+            .catch((err) =>{
+                console.log(err);
+                res.status(503).send(false);
+            })
     }
 }
 

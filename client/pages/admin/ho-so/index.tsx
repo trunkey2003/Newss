@@ -46,7 +46,7 @@ export default function HoSo({ }: Props) {
 
             <div className='flex flex-wrap'>
                 {profiles.map((profile: Profile, index) => (<div key={index} className="w-full md:w-[32%] md:mx-[0.3%] rounded overflow-hidden shadow-lg border-2 hover:border-2 hover:border-blue-600 hover:cursor-pointer rounded">
-                    <Link href={`admin/ho-so/${profile.id}`}>
+                    <Link href={`/admin/ho-so/${profile.id}`}>
                         <div className="px-6 py-4">
                             <div className="font-bold text-xl mb-2">ID: {profile.id}</div>
                             <p className="text-gray-700 text-base">Field 1 : {profile.fieldOne}</p>

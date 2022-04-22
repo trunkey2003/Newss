@@ -21,6 +21,7 @@ router.get('/user', userController.showAllUsers);
 router.post('/user/sign-up', userController.addUser);
 router.post('/user/sign-in', authController.validateUserNameAndPassword, authController.setToken, authController.setCookie);
 router.get('/user/get-authorization-info', authController.verifyToken, userController.getUserInfoThroughCookie);
+router.post('/user/verify-admin', authController.verifyToken, authController.verifyAdmin);
 
 
 module.exports = router;

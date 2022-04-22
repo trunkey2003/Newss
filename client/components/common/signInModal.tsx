@@ -39,8 +39,6 @@ export default function SignInModal({ showSignIn, handleShowSignIn }: Props) {
   }
 
   const handleSignIn = () => {
-    const url = 'http://127.0.0.1:5000';
-
     const user = {
       userName: userName,
       password: password
