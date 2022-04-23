@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Loading from '../../components/common/loading';
-import GetLayoutAdmin from '../../components/function/getLayoutAdmin'
+import Loading from '../../components/common/Loading';
+import GetLayoutAdmin from '../../components/function/GetLayoutAdmin'
 import { Axios } from '../../configs/axios';
 import { UserType } from '../../models/UserType';
 
