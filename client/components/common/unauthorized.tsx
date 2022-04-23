@@ -3,7 +3,7 @@ import { Axios } from '../../configs/axios';
 import LoadingButton from '@mui/lab/LoadingButton';
 import RocketLaunch from '@mui/icons-material/RocketLaunch';
 import {MessageType} from '../../models/Message';
-import AlertBoxWrapper from "./alertBoxWrapper";
+import AlertBoxWrapper from './alertBoxWrapper';
 import AlertBox from "./alertBox";
 
 type Props = {};
