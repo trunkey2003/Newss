@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Link from 'next/link';
-import Loading from '../../../components/common/loading';
+import Loading from '../../../components/common/Loading';
 
 type Props = {}
 

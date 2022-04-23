@@ -1,7 +1,8 @@
+import { Avatar } from '@mui/material';
 import Link from 'next/link';
 import { useEffect, useState } from 'react'
-import SignInModal from './signInModal';
-import SignUpModal from './signUpModal';
+import SignInModal from '../common/SignInModal';
+import SignUpModal from '../common/SignUpModal';
 
 type Props = {}
 
@@ -21,24 +22,29 @@ const style = {
 export default function Nav({ }: Props) {
   const [showSignUp, setShowSignUp] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
-  const [subNavOpen, setSubNavOpen] = useState(false);
+  const [showSolution, setShowSolution] = useState(false);
   const [userName, setUsername] = useState('');
+  const [avatar, setAvatar] = useState('');
 
-  const readCookieAsObject: any = (cookie: string) => {
-    const cookieArr: string[] = cookie.split(';');
-    const keyArr = cookieArr.map((element) => element.substring(0, element.indexOf('=')));
-    const valueArr = cookieArr.map((element) => element.substring(element.indexOf('=') + 1, element.length));
-    const cookieObj: any = {};
-    for (var i = 0; i < cookieArr.length; i++) {
-      cookieObj[keyArr[i]] = valueArr[i];
+  function getCookie(cname : string) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
     }
-    if (cookieObj.role) cookieObj.role = Number(cookieObj.role);
-    return cookieObj;
+    return "";
   }
 
   useEffect(() => {
-    const cookieClient = readCookieAsObject(document.cookie);
-    setUsername(cookieClient.userName);
+    setUsername(getCookie('userName'));
+    setAvatar(getCookie('avatar'));
   }, [])
 
   const handleShowSignUp = (bl: boolean) => {
@@ -52,9 +58,9 @@ export default function Nav({ }: Props) {
 
 
   return (
-    <div className="relative bg-white">
+    <div className="relative bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+        <div className="flex justify-between items-center py-2 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link href='/'>
               {/* <span className="sr-only">Workflow</span> */}
@@ -71,13 +77,13 @@ export default function Nav({ }: Props) {
           </div>
           <nav className="hidden md:flex space-x-10">
             <div className="relative">
-              <button type="button" className="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-expanded="false">
+              <button type="button" onClick={() => setShowSolution(!showSolution)} className="py-2 px-4 text-white group rounded-md inline-flex items-center text-base font-medium hover:text-gray-300" aria-expanded="false">
                 <span>Solutions</span>
-                <svg className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <svg className="text-white ml-2 h-5 w-5 group-hover:text-gray-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </button>
-              <div className="absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2 hidden">
+              <div className={`absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2 ${showSolution ? '' : 'hidden'}`}>
                 <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                   <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                     <a href="#" className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
@@ -134,116 +140,53 @@ export default function Nav({ }: Props) {
                     <div className="flow-root">
                       <a href="#" className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100">
                         <svg className="flex-shrink-0 h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span className="ml-3">Watch Demo</span>
-                      </a>
-                    </div>
-
-                    <div className="flow-root">
-                      <a href="#" className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100">
-                        <svg className="flex-shrink-0 h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
-                        <span className="ml-3">Contact Sales</span>
+                        <a href="tel:+849392844753" className="ml-3">Contact Developer</a>
                       </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <Link href="/admin/ho-so/">
-              <a className="text-base font-medium text-gray-500 hover:text-gray-900 hover:cursor-pointer">Profile</a>
-            </Link>
-
-            <Link href="/admin/ho-so/tao-ho-so">
-              <a className="text-base font-medium text-gray-500 hover:text-gray-900 hover:cursor-pointer">Add Profile</a>
-            </Link>
-
-            <div className="relative">
-              <button type="button" className="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-expanded="false">
-                <span>More</span>
-                <svg className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </button>
-              <div className="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0 hidden">
-                <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                  <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                    <a href="#" className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                      <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-                      </svg>
-                      <div className="ml-4">
-                        <p className="text-base font-medium text-gray-900">Help Center</p>
-                        <p className="mt-1 text-sm text-gray-500">Get all of your questions answered in our forums or contact support.</p>
-                      </div>
-                    </a>
-
-                    <a href="#" className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                      <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <div className="ml-4">
-                        <p className="text-base font-medium text-gray-900">Guides</p>
-                        <p className="mt-1 text-sm text-gray-500">Learn how to maximize our platform to get the most out of it.</p>
-                      </div>
-                    </a>
-
-                    <a href="#" className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                      <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <div className="ml-4">
-                        <p className="text-base font-medium text-gray-900">Events</p>
-                        <p className="mt-1 text-sm text-gray-500">See what meet-ups and other events we might be planning near you.</p>
-                      </div>
-                    </a>
-
-                    <a href="#" className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                      <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                      </svg>
-                      <div className="ml-4">
-                        <p className="text-base font-medium text-gray-900">Security</p>
-                        <p className="mt-1 text-sm text-gray-500">Understand how we take your privacy seriously.</p>
-                      </div>
-                    </a>
-                  </div>
-                  <div className="px-5 py-5 bg-gray-50 sm:px-8 sm:py-8">
-                    <div>
-                      <h3 className="text-sm tracking-wide font-medium text-gray-500 uppercase">Recent Posts</h3>
-                      <ul role="list" className="mt-4 space-y-4">
-                        <li className="text-base truncate">
-                          <a href="#" className="font-medium text-gray-900 hover:text-gray-700"> Boost your conversion rate </a>
-                        </li>
-
-                        <li className="text-base truncate">
-                          <a href="#" className="font-medium text-gray-900 hover:text-gray-700"> How to use search engine optimization to drive traffic to your site </a>
-                        </li>
-
-                        <li className="text-base truncate">
-                          <a href="#" className="font-medium text-gray-900 hover:text-gray-700"> Improve your customer experience </a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="mt-5 text-sm">
-                      <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500"> View all posts <span aria-hidden="true">&rarr;</span></a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </nav>
-          {userName ? 
-          <div className='font-medium text-gray-900'>Xin chào {userName}</div> 
-          : 
-          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <button onClick={() => handleShowSignIn(true)} className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"> Sign in </button>
-            <button onClick={() => handleShowSignUp(true)} className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Sign up </button>
-          </div>}
+          {userName ?
+            <div className="flex items-center md:order-2">
+              <button type="button" className="flex mr-3 text-sm md:mr-0 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
+                <span className="sr-only">Open user menu</span>
+                <img className="w-10 h-10 rounded-full" src={avatar}/>
+              </button>
+              <div className="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown">
+                <div className="py-3 px-4">
+                  <span className="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+                  <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                </div>
+                <ul className="py-1" aria-labelledby="dropdown">
+                  <li>
+                    <a href="#" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                  </li>
+                  <li>
+                    <a href="#" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                  </li>
+                  <li>
+                    <a href="#" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+                  </li>
+                  <li>
+                    <a href="#" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                  </li>
+                </ul>
+              </div>
+              <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
+                <span className="sr-only">Open main menu</span>
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                <svg className="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </button>
+            </div>
+            :
+            <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+              <button onClick={() => handleShowSignIn(true)} className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"> Sign in </button>
+              <button onClick={() => handleShowSignUp(true)} className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Sign up </button>
+            </div>}
         </div>
       </div>
       <div className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden hidden">

@@ -1,16 +1,26 @@
 import '../styles/globals.css'
-import { Layout } from '../components/layout/index';
+import type { ReactElement, ReactNode } from 'react'
+import type { NextPage } from 'next'
+import type { AppProps } from 'next/app'
 import { Axios } from '../configs/axios';
-import AlertBoxWrapper from '../components/common/alertBoxWrapper';
-import AlertBox from '../components/common/alertBox';
+import AlertBoxWrapper from '../components/common/AlertBoxWrapper';
+import AlertBox from '../components/common/AlertBox';
 import { MessageType } from '../models/Message';
 import { useState, useEffect, createContext } from 'react';
 import { useRouter } from 'next/router';
-import Unauthorized from '../components/common/unauthorized';
+import Unauthorized from '../components/common/Unauthorized';
 
 type MessageContextType = {
   handleAddMessage : (msg: MessageType) => void
 } | null
+
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
 
 export const MessageContext = createContext<MessageContextType>(null);
 
@@ -19,6 +29,8 @@ export default function MyApp({ Component, pageProps }: any) {
   const [authAdmin, setAuthAdmin] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
   const route = useRouter();
+  const getLayout = Component.getLayout ?? ((page : any) => page)
+
 
   useEffect(() =>{
     const pathnameArr = route.pathname.split('/');
@@ -35,7 +47,7 @@ export default function MyApp({ Component, pageProps }: any) {
     .catch((err) =>{
       setAuthAdmin(false);
     })
-    .finally(() => setLoading(false))
+    .finally(() => {setLoading(false); console.log(authAdmin)})
 
     //Nếu là route admin thì sẽ gửi request kèm cookie tới server để check role
     
@@ -58,14 +70,14 @@ export default function MyApp({ Component, pageProps }: any) {
     handleAddMessage: handleAddMessage
   } 
 
-  return (
+  return getLayout(
     <MessageContext.Provider value={value}>
-      <Layout>
+      {/* <Layout> */}
         <AlertBoxWrapper>
           {messages.map((message, index) => <AlertBox key={index} message={message} handleCloseMessage={handleCloseMessage} index={index} />)}
         </AlertBoxWrapper>
         <Component {...pageProps} />
-      </Layout>
+      {/* </Layout> */}
     </MessageContext.Provider>
   )
 }

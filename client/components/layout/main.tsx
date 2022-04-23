@@ -1,14 +1,11 @@
-// components/layout.js
+import React from 'react'
 
-import Nav from '../common/nav';
-import Footer from '../common/footer';
+export interface IAdmin{
+    
+}
 
-export function Layout({ children }: any) {
+export function Layout({}: IAdmin) {
   return (
-    <>
-      <Nav />
-        <main className='min-h-screen mx-[10%] pt-5'>{children}</main>
-      <Footer />
-    </>
+    <div>Admin</div>
   )
 }

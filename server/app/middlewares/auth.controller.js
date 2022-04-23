@@ -10,6 +10,7 @@ class authController{
                 const valid = await bcrypt.compare(password, user.password);
                 if (valid) { 
                     res.locals._id = user._id;
+                    res.locals.avatar = user.avatar;
                     //Tạm thời cookie role không cần thiết mấy vì server đang authorize admin bằng cách kiểm tra database
                     res.locals.userName = user.userName;
                     next(); 
@@ -44,7 +45,7 @@ class authController{
             secure: true,
             httpOnly: true,
             maxAge : maxAge,
-        }).status(200).send({ userName : res.locals.userName, maxAge : maxAge})
+        }).status(200).send({ userName : res.locals.userName, maxAge : maxAge, avatar: res.locals.avatar})
     }
 
     verifyToken(req, res, next){

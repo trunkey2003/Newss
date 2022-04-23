@@ -1,11 +1,20 @@
-import React from 'react'
+// components/layout.js
 
-export interface IAdmin{
-    
-}
+import AdminNavbar from '../common/admin/AdminNavbar';
+import Sidebar from '../common/admin/SideBar';
+import Footer from './FooterAdmin';
 
-export function Admin({}: IAdmin) {
+export function AdminLayout({ children }: any) {
   return (
-    <div>Admin</div>
+    <>
+      <Sidebar />
+      <div className="relative md:ml-64 bg-blueGray-100">
+        <AdminNavbar/>
+        <main className='min-h-screen'>
+          {children}
+        </main>
+      <Footer />
+      </div>
+    </>
   )
 }

@@ -3,8 +3,8 @@ import { Axios } from '../../configs/axios';
 import LoadingButton from '@mui/lab/LoadingButton';
 import RocketLaunch from '@mui/icons-material/RocketLaunch';
 import {MessageType} from '../../models/Message';
-import AlertBoxWrapper from "./alertBoxWrapper";
-import AlertBox from "./alertBox";
+import AlertBoxWrapper from "./AlertBoxWrapper";
+import AlertBox from "./AlertBox";
 
 type Props = {};
 
@@ -40,7 +40,7 @@ export default function Unauthorized({ }: Props) {
 
     Axios.post(`/api/user/sign-in`, user).then(({data}) => {
       setCookieClient('userName',  data.userName, data.maxAge);
-      setCookieClient('role',  0, data.maxAge);
+      setCookieClient('avatar', data.avatar, data.maxAge);
       handleAddMessage({ type: 'success', title: 'Đăng nhập thành công', content: 'Đăng nhập dưới tài khoản ' + userName + ' thành công' });
       setTimeout(() => {window.location.assign('/admin')}, 1000); // cho admin 1s xem thông báo
     }).catch((err : any) => {

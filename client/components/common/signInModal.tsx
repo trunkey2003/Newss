@@ -48,7 +48,7 @@ export default function SignInModal({ showSignIn, handleShowSignIn }: Props) {
 
     Axios.post(`/api/user/sign-in`, user).then(({data}) => {
       setCookieClient('userName',  data.userName, data.maxAge);
-      setCookieClient('role',  0, data.maxAge);
+      setCookieClient('avatar', data.avatar, data.maxAge);
       messageContext?.handleAddMessage({ type: 'success', title: 'Đăng nhập thành công', content: 'Đăng nhập dưới tài khoản ' + userName + ' thành công' });
     }).catch((err : any) => {
       console.log(err);

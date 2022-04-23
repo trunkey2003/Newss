@@ -3,8 +3,8 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import SaveIcon from '@mui/icons-material/Save';
 import { MessageType } from '../../../../models/Message';
 import axios from 'axios';
-import AlertBox from '../../../../components/common/alertBox';
-import AlertBoxWrapper from '../../../../components/common/alertBoxWrapper';
+import AlertBox from '../../../../components/common/AlertBox';
+import AlertBoxWrapper from '../../../../components/common/AlertBoxWrapper';
 import {MessageContext} from '../../../_app';
  
 type Props = {}

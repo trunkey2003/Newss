@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Profile } from './index';
 import { useRouter } from 'next/router'
-import Loading from '../../../components/common/loading';
+import Loading from '../../../components/common/Loading';
 
 type Props = {}
 
