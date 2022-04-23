@@ -1,5 +1,5 @@
 import React from 'react';
-import GetLayoutAdmin from '../../components/function/GetLayoutAdmin'
+import GetLayoutAdmin from '../../components/function/getLayoutAdmin'
 
 type Props = {}
 

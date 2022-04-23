@@ -2,7 +2,7 @@
 
 import AdminNavbar from '../common/admin/AdminNavbar';
 import Sidebar from '../common/admin/SideBar';
-import Footer from './FooterAdmin';
+import Footer from './footerAdmin';
 
 export default function AdminLayout({ children }: any) {
   return (

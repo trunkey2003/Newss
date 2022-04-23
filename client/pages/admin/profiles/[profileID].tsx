@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Profile } from '../profiles';
 import { useRouter } from 'next/router'
 import Loading from '../../../components/common/loading';
-import GetLayoutAdmin from '../../../components/function/GetLayoutAdmin';
+import GetLayoutAdmin from '../../../components/function/getLayoutAdmin';
 import LockIcon from '@mui/icons-material/Lock';
 import CardStats from '../../../components/common/admin/CardStats';
 import ComputerIcon from '@mui/icons-material/Computer';

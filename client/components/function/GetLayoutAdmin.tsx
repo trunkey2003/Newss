@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import AdminLayout from "../layout/Admin";
+import AdminLayout from "../layout/admin";
 
 export default function getLayoutAdmin(page: ReactElement) {
     return (

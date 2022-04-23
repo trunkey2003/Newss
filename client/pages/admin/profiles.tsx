@@ -2,7 +2,7 @@ import React, {useEffect, useState } from 'react'
 import axios from 'axios';
 import Link from 'next/link';
 import Loading from '../../components/common/loading';
-import GetLayoutAdmin from '../../components/function/GetLayoutAdmin'
+import GetLayoutAdmin from '../../components/function/getLayoutAdmin'
 import LockIcon from '@mui/icons-material/Lock';
 import CardStats from '../../components/common/admin/CardStats';
 import ProfilesIcon from '@mui/icons-material/FolderShared';
