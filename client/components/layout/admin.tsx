@@ -4,7 +4,7 @@ import AdminNavbar from '../common/admin/AdminNavbar';
 import Sidebar from '../common/admin/SideBar';
 import Footer from './FooterAdmin';
 
-export function AdminLayout({ children }: any) {
+export default function AdminLayout({ children }: any) {
   return (
     <>
       <Sidebar />
