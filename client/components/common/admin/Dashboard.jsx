@@ -4,8 +4,8 @@ import React from "react";
 
 import CardLineChart from "./CardLineChart";
 import CardBarChart from "./CardBarChart";
-import CardPageVisits from "./CardPageVisits";
-import CardSocialTraffic from "./CardSocialTraffic";
+import CardPageVisits from "./CardPageVisits.tsx";
+import CardSocialTraffic from "./CardSocialTraffic.tsx";
 
 export default function Dashboard() {
   return (
