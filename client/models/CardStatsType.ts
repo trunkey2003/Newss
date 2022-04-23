@@ -1,3 +1,5 @@
+
+
 export type CardStatsType = {
     statSubtitle : any,
     statTitle : any,
@@ -5,6 +7,6 @@ export type CardStatsType = {
     statPercent : any,
     statPercentColor : any,
     statDescripiron : any,
-    statIconName : any,
+    statIcon : any,
     statIconColor : any,
 }

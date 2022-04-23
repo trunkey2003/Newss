@@ -1,10 +1,11 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import axios from 'axios';
 import Link from 'next/link';
 import Loading from '../../components/common/Loading';
-import { AdminLayout } from '../../components/layout';
+import GetLayoutAdmin from '../../components/function/GetLayoutAdmin'
 import LockIcon from '@mui/icons-material/Lock';
 import CardStats from '../../components/common/admin/CardStats';
+import ProfilesIcon from '@mui/icons-material/FolderShared';
 
 type Props = {}
 
@@ -53,13 +54,13 @@ export default function HoSo({ }: Props) {
                     statPercent="0"
                     statPercentColor="text-green-500"
                     statDescripiron="Since yesterday"
-                    statIconName="fas fa-users"
+                    statIcon={ProfilesIcon}
                     statIconColor="bg-green-500"
                 />
                 <div className='flex flex-wrap'>
                     {profiles.map((profile: Profile, index) => (<div key={index}
                         className="w-full md:w-[32%] md:mx-[0.6%] rounded overflow-hidden shadow-lg border-2 hover:border-2 hover:border-black hover:cursor-pointer rounded bg-white my-2">
-                        <Link href={`/admin/ho-so/${profile.id}`}>
+                        <Link href={`/admin/profiles/${profile.id}`}>
                             <div className="px-6 py-4">
                                 <div className="font-bold text-xl mb-2"><LockIcon color='primary' /> {profile.id}</div>
                                 <p className="text-gray-700 text-base h-8 bg-gray-300 my-2 rounded-lg p-1">{profile.fieldOne}</p>
@@ -77,10 +78,4 @@ export default function HoSo({ }: Props) {
     )
 }
 
-HoSo.getLayout = function getLayout(page: ReactElement) {
-    return (
-        <AdminLayout>
-            {page}
-        </AdminLayout>
-    )
-}
+HoSo.getLayout = GetLayoutAdmin;

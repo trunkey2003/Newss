@@ -1,4 +1,9 @@
+import Link from "next/link";
 import React, { useState } from "react";
+import TotalTrafficIcon from '@mui/icons-material/SsidChart';
+import IntermediateTrafficIcon from '@mui/icons-material/Timeline';
+import UsersIcon from '@mui/icons-material/People';
+import ProfilesIcon from '@mui/icons-material/FolderShared';
 
 // components
 
@@ -17,54 +22,65 @@ export default function HeaderStats() {
           <div>
             {/* Card stats */}
             <div className="flex flex-wrap">
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <CardStats
-                  statSubtitle="TOTAL TRAFFIC"
-                  statTitle={totalTrafficStat}
-                  statArrow="up"
-                  statPercent="0"
-                  statPercentColor="text-emerald-500"
-                  statDescripiron="Since yesterday"
-                  statIconName="far fa-chart-bar"
-                  statIconColor="bg-red-500"
-                />
-              </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <CardStats
-                  statSubtitle="USERS"
-                  statTitle={userStat}
-                  statArrow="down"
-                  statPercent="0"
-                  statPercentColor="text-red-500"
-                  statDescripiron="Since yesterday"
-                  statIconName="fas fa-chart-pie"
-                  statIconColor="bg-yellow-500"
-                />
-              </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <CardStats
-                  statSubtitle="INTERMEDIATE URL TRAFFIC"
-                  statTitle={userStat}
-                  statArrow="down"
-                  statPercent="0"
-                  statPercentColor="text-orange-500"
-                  statDescripiron="Since yesterday"
-                  statIconName="fas fa-users"
-                  statIconColor="bg-green-500"
-                />
-              </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                <CardStats
-                  statSubtitle="PROFILES"
-                  statTitle={userStat}
-                  statArrow="up"
-                  statPercent="0"
-                  statPercentColor="text-emerald-500"
-                  statDescripiron="Since yesterday"
-                  statIconName="fas fa-percent"
-                  statIconColor="bg-cyan-500"
-                />
-              </div>
+              <Link href='/admin/total-traffic'>
+                <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+                  <CardStats
+                    statSubtitle="TOTAL TRAFFIC"
+                    statTitle={totalTrafficStat}
+                    statArrow="up"
+                    statPercent="0"
+                    statPercentColor="text-emerald-500"
+                    statDescripiron="Since yesterday"
+                    statIcon={TotalTrafficIcon}
+                    statIconColor="bg-red-500"
+                  />
+                </div>
+              </Link>
+
+              <Link href='/admin/intermediate-url-traffic'>
+                <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+                  <CardStats
+                    statSubtitle="INTERMEDIATE URL TRAFFIC"
+                    statTitle={userStat}
+                    statArrow="down"
+                    statPercent="0"
+                    statPercentColor="text-orange-500"
+                    statDescripiron="Since yesterday"
+                    statIcon={IntermediateTrafficIcon}
+                    statIconColor="bg-green-500"
+                  />
+                </div>
+              </Link>
+
+              <Link href='/admin/users'>
+                <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+                  <CardStats
+                    statSubtitle="USERS"
+                    statTitle={userStat}
+                    statArrow="down"
+                    statPercent="0"
+                    statPercentColor="text-red-500"
+                    statDescripiron="Since yesterday"
+                    statIcon={UsersIcon}
+                    statIconColor="bg-yellow-500"
+                  />
+                </div>
+              </Link>
+
+              <Link href='/admin/profiles'>
+                <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+                  <CardStats
+                    statSubtitle="PROFILES"
+                    statTitle={userStat}
+                    statArrow="up"
+                    statPercent="0"
+                    statPercentColor="text-emerald-500"
+                    statDescripiron="Since yesterday"
+                    statIcon={ProfilesIcon}
+                    statIconColor="bg-cyan-500"
+                  />
+                </div>
+              </Link>
             </div>
           </div>
         </div>

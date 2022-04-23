@@ -9,6 +9,7 @@ import PasswordIcon from '@mui/icons-material/Password';
 import AdminIcon from '@mui/icons-material/AdminPanelSettings';
 import ImageIcon from '@mui/icons-material/Image';
 import CardStats from '../../components/common/admin/CardStats';
+import UsersIcon from '@mui/icons-material/People';
 
 type Props = {}
 
@@ -40,7 +41,7 @@ export default function Users({ }: Props) {
         statPercent="0"
         statPercentColor="text-green-500"
         statDescripiron="Since yesterday"
-        statIconName="fas fa-users"
+        statIcon={UsersIcon}
         statIconColor="bg-yellow-500"
       />
       <div className='flex flex-wrap'>

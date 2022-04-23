@@ -3,6 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { Profile } from '../profiles';
 import { useRouter } from 'next/router'
 import Loading from '../../../components/common/Loading';
+import GetLayoutAdmin from '../../../components/function/GetLayoutAdmin';
+import LockIcon from '@mui/icons-material/Lock';
+import CardStats from '../../../components/common/admin/CardStats';
+import ComputerIcon from '@mui/icons-material/Computer';
 
 type Props = {}
 
@@ -26,10 +30,10 @@ export default function ProfileID({ }: Props) {
         .then(({ data }) => {
           console.log(data);
           setComputers(data);
-          if (data.length == 0) setMsg(`Hiện tại không có computer nào thuộc về hồ sơ này`)
+          if (data.length == 0) setMsg(`None computer belongs to this profile`)
         })
         .catch(() => {
-          setMsg(`Không đọc được thư mục ${profileID} vui lòng kiểm tra lại host`)
+          setMsg(`Cannot read profile ${profileID}, please contact the developer`)
         })
         .finally(() => {
           setLoading(false);
@@ -41,7 +45,7 @@ export default function ProfileID({ }: Props) {
   }, [router])
 
   if (loading) return (
-    <Loading/>
+    <Loading />
   )
 
   if (!profile) return (
@@ -54,23 +58,42 @@ export default function ProfileID({ }: Props) {
   )
 
   return (
-    <div>
-      <div className="px-6 py-4 border-2 border-blue-600 rounded">
-        <div className="font-bold text-xl mb-2">ID: {profile?.id}</div>
-        <p className="text-gray-700 text-base">Field 1 : {profile?.fieldOne}</p>
-        <p className="text-gray-700 text-base">Field 2 : {profile?.fieldTwo}</p>
-        <p className="text-gray-700 text-base">Field 3 : {profile?.fieldThree}</p>
-        <p className="text-gray-700 text-base">Field 4 : {profile?.fieldFour}</p>
-        <p className="text-gray-700 text-base">Field 5 : {profile?.fieldFive}</p>
-        <p className="text-gray-700 text-base">Field 6 : {profile?.fieldSix}</p>
+    <div className='md:py-24 md:px-16 px-4 bg-sky-600 min-h-screen'>
+      <div className='pt-4'/>
+      <CardStats
+        statSubtitle="Computers"
+        statTitle={String(computers.length)}
+        statArrow="down"
+        statPercent="0"
+        statPercentColor="text-green-500"
+        statDescripiron="Since yesterday"
+        statIcon={ComputerIcon}
+        statIconColor="bg-purple-500"
+      />
+
+      <div className="px-6 py-4 bg-white rounded mt-4">
+        <a className="font-bold text-xl mb-2 hover:text-red-400" href={`/api/profile/${profile.id}`}><LockIcon color='primary' /> {profile.id}</a>
+        <p className="text-gray-700 text-base h-8 bg-gray-300 my-2 rounded-lg p-1">{profile.fieldOne}</p>
+        <p className="text-gray-700 text-base h-8 bg-gray-300 my-2 rounded-lg p-1">{profile.fieldTwo}</p>
+        <p className="text-gray-700 text-base h-8 bg-gray-300 my-2 rounded-lg p-1">{profile.fieldThree}</p>
+        <p className="text-gray-700 text-base h-8 bg-gray-300 my-2 rounded-lg p-1">{profile.fieldFour}</p>
+        <p className="text-gray-700 text-base h-8 bg-gray-300 my-2 rounded-lg p-1">{profile.fieldFive}</p>
+        <p className="text-gray-700 text-base h-8 bg-gray-300 my-2 rounded-lg p-1">{profile.fieldSix}</p>
       </div>
-      {Msg ? <div className='text-center p-12 border-2 border-gray-400 mt-5 text-2xl text-gray-500 font-semibold'>{Msg}</div> : ''}
+      {Msg ? 
+      <div className='text-center p-12 bg-gray-200 border-2 border-white mt-5 text-2xl text-gray-700 font-semibold'>
+        <div className='text-[100px] text-center text-red-400'>404</div>
+        <br/>
+        {Msg}
+      </div> : ''}
       <div className='flex flex-wrap my-4'>
         {computers.length > 0 ? computers.map((computer, index) =>
-          <p key={index} dangerouslySetInnerHTML={{__html: computer}} className="w-full md:w-[32%] h-[200px] mx-[0.6%] my-2 border-2 border-purple-500 p-5 rounded">
+          <p key={index} dangerouslySetInnerHTML={{ __html: computer }} className="w-full md:w-[32%] h-[200px] mx-[0.6%] my-2 bg-white border-2 border-gray-600 p-5 rounded">
           </p>
         ) : ''}
       </div>
     </div>
   )
 }
+
+ProfileID.getLayout = GetLayoutAdmin;

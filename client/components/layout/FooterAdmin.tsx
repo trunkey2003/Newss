@@ -4,10 +4,10 @@ type Props = {}
 
 export default function Footer({ }: Props) {
     return (
-        <footer className="text-center text-white bg-gray-200">
+        <footer className="text-center text-white bg-gray-800">
             <div className="pt-9 w-full">
                 <div className="flex justify-center mb-9">
-                    <a href="#!" className="mx-4 text-gray-800">
+                    <a href="#!" className="mx-4 text-white">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -24,7 +24,7 @@ export default function Footer({ }: Props) {
                             ></path>
                         </svg>
                     </a>
-                    <a href="#!" className="mx-4 text-gray-800">
+                    <a href="#!" className="mx-4 text-white">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -41,7 +41,7 @@ export default function Footer({ }: Props) {
                             ></path>
                         </svg>
                     </a>
-                    <a href="#!" className="mx-4 text-gray-800">
+                    <a href="#!" className="mx-4 text-white">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -58,7 +58,7 @@ export default function Footer({ }: Props) {
                             ></path>
                         </svg>
                     </a>
-                    <a href="#!" className="mx-4 text-gray-800">
+                    <a href="#!" className="mx-4 text-white">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -78,9 +78,9 @@ export default function Footer({ }: Props) {
                 </div>
             </div>
 
-            <div className="text-center text-gray-700 p-4">
-                © 2021 Copyright:
-                <a className="text-gray-800" href="https://tailwind-elements.com/">Tailwind Elements</a>
+            <div className="text-center text-gray-400 p-4">
+                © 2022 Copyright: 
+                <a className="text-white ml-1" href="https://eaviet.com">EAViet</a>
             </div>
         </footer>
     )

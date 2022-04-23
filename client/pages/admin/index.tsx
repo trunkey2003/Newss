@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import LoadingFixed from '../../components/common/LoadingFixed';
 import GetLayoutAdmin from '../../components/function/GetLayoutAdmin'
 import HeaderStats from '../../components/common/admin/HeaderStats';
+import Dashboard from '../../components/common/admin/Dashboard';
 
 type Props = {}
 
@@ -13,6 +14,7 @@ export default function Index({ }: Props) {
   return (
     <div className='bg-blue-500 w-full'>
       <HeaderStats />
+      <Dashboard/>
     </div>
   )
 }
