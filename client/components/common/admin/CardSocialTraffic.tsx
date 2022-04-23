@@ -73,7 +73,8 @@ export default function CardSocialTraffic() {
               </tr>
             </thead>
             <tbody>
-              {fakeAPI.map((field) => <tr>
+              {fakeAPI.map((field, index) => 
+              <tr key={index}>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                   {field.profile}
                 </th>

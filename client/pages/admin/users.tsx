@@ -45,8 +45,8 @@ export default function Users({ }: Props) {
         statIconColor="bg-yellow-500"
       />
       <div className='flex flex-wrap'>
-        {users.map((user: UserType) =>
-          <div className='w-full md:w-[49%] mx-[0.25%] p-4 bg-white h-[220px] mt-5 border-2 hover:border-black hover:cursor-pointer'>
+        {users.map((user: UserType, index) =>
+          <div key={index} className='w-full md:w-[49%] mx-[0.25%] p-4 bg-white h-[220px] mt-5 border-2 hover:border-black hover:cursor-pointer'>
             <div className='h-9 my-2 flex items-center'>
               <AccountCircle />
               <div className='ml-2 bg-gray-200 truncate py-1 px-4 rounded-md'>{user.userName}</div>
