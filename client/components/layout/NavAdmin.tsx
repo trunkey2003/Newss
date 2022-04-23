@@ -1,8 +1,8 @@
 import { Avatar } from '@mui/material';
 import Link from 'next/link';
 import { useEffect, useState } from 'react'
-import SignInModal from '../common/SignInModal';
-import SignUpModal from '../common/SignUpModal';
+import SignInModal from '../common/signInModal';
+import SignUpModal from '../common/signUpModal';
 
 type Props = {}
 

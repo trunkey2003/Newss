@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Profile } from '../profiles';
 import { useRouter } from 'next/router'
-import Loading from '../../../components/common/Loading';
+import Loading from '../../../components/common/loading';
 import GetLayoutAdmin from '../../../components/function/GetLayoutAdmin';
 import LockIcon from '@mui/icons-material/Lock';
 import CardStats from '../../../components/common/admin/CardStats';

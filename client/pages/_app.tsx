@@ -3,12 +3,12 @@ import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import { Axios } from '../configs/axios';
-import AlertBoxWrapper from '../components/common/AlertBoxWrapper';
-import AlertBox from '../components/common/AlertBox';
+import AlertBoxWrapper from '../components/common/alertBoxWrapper';
+import AlertBox from '../components/common/alertBox';
 import { MessageType } from '../models/Message';
 import { useState, useEffect, createContext } from 'react';
 import { useRouter } from 'next/router';
-import Unauthorized from '../components/common/Unauthorized';
+import Unauthorized from '../components/common/unauthorized';
 
 type MessageContextType = {
   handleAddMessage : (msg: MessageType) => void
