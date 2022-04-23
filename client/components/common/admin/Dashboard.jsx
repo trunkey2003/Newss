@@ -2,15 +2,15 @@ import React from "react";
 
 // components
 
-import CardLineChart from "./CardLineChart.js";
-import CardBarChart from "./CardBarChart.js";
-import CardPageVisits from "./CardPageVisits.js";
-import CardSocialTraffic from "./CardSocialTraffic.js";
+import CardLineChart from "./CardLineChart";
+import CardBarChart from "./CardBarChart";
+import CardPageVisits from "./CardPageVisits";
+import CardSocialTraffic from "./CardSocialTraffic";
 
 export default function Dashboard() {
   return (
-    <>
-      <div className="flex flex-wrap">
+    <div className="bg-blue-200">
+      <div className="flex flex-wrap pt-10">
         <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
           <CardLineChart />
         </div>
@@ -26,6 +26,6 @@ export default function Dashboard() {
           <CardSocialTraffic />
         </div>
       </div>
-    </>
+    </div>
   );
 }

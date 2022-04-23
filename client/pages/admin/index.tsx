@@ -12,8 +12,8 @@ export default function Index({ }: Props) {
   if (loading) return <LoadingFixed />;
 
   return (
-    <div className='bg-blue-500 w-full'>
-      <HeaderStats />
+    <div className='w-full'>
+      <HeaderStats/>
       <Dashboard/>
     </div>
   )
