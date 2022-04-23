@@ -64,8 +64,8 @@ class authController{
         users.findOne({ _id: res.locals.user._id })
             .then((user) => {
                 if (!user) res.status(404); //user xóa tk hoặc thay đổi _id trên db
-                if (user.role == 0) res.status(200).send(true);
-                if (user.role != 0) res.status(403).send(false);
+                if (user.role != 0) res.status(200).send(true);
+                if (user.role == 0) res.status(403).send(false);
             })
             .catch((err) =>{
                 console.log(err);

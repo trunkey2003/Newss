@@ -1,4 +1,5 @@
 /*eslint-disable*/
+import Link from "next/link";
 import React from "react";
 
 import NotificationDropdown from "./NotificationDropdown";
@@ -19,7 +20,7 @@ export default function Sidebar() {
             <i className="fas fa-bars"></i>
           </button>
           {/* Brand */}
-          <div className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+          <div className="md:block text-left md:pb-2 text-gray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
             <a
               className="text-2xl"
               href="/"
@@ -44,10 +45,10 @@ export default function Sidebar() {
             }
           >
             {/* Collapse header */}
-            <div className="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200">
+            <div className="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-gray-200">
               <div className="flex flex-wrap">
                 <div className="w-6/12">
-                  <div className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+                  <div className="md:block text-left md:pb-2 text-gray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
                     <a
                       href="/"
                     >
@@ -72,7 +73,7 @@ export default function Sidebar() {
                 <input
                   type="text"
                   placeholder="Search"
-                  className="border-0 px-3 py-2 h-12 border border-solid  border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
+                  className="border-0 px-3 py-2 h-12 border border-solid  border-gray-500 placeholder-gray-300 text-gray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
                 />
               </div>
             </form>
@@ -80,135 +81,119 @@ export default function Sidebar() {
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+            <h6 className="md:min-w-full text-gray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
               Admin Layout Pages
             </h6>
             {/* Navigation */}
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
-                <a
-                  className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/dashboard") !== -1
-                      ? "text-lightBlue-500 hover:text-lightBlue-600"
-                      : "text-blueGray-700 hover:text-blueGray-500")
-                  }
-                  href="/admin/dashboard"
-                >
-                  <i
+                <Link href="/admin">
+                  <a
                     className={
-                      "fas fa-tv mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/dashboard") !== -1
-                        ? "opacity-75"
-                        : "text-blueGray-300")
+                      "text-xs uppercase py-3 font-bold block " +
+                      (window.location.href == window.location.origin + '/admin'
+                        ? "text-blue-500 hover:text-blue-600"
+                        : "text-gray-700 hover:text-gray-500")
                     }
-                  ></i>{" "}
-                  Dashboard
-                </a>
+                  >
+                    <i
+                      className={
+                        "fas fa-tv mr-2 text-sm " +
+                        (window.location.href == window.location.origin + '/admin'
+                          ? "opacity-75"
+                          : "text-gray-300")
+                      }
+                    ></i>{" "}
+                    Dashboard
+                  </a>
+                </Link>
               </li>
 
               <li className="items-center">
-                <a
-                  className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/settings") !== -1
-                      ? "text-lightBlue-500 hover:text-lightBlue-600"
-                      : "text-blueGray-700 hover:text-blueGray-500")
-                  }
-                  href="/admin/settings"
-                >
-                  <i
+                <Link href="/admin/settings">
+                  <a
                     className={
-                      "fas fa-tools mr-2 text-sm " +
+                      "text-xs uppercase py-3 font-bold block " +
                       (window.location.href.indexOf("/admin/settings") !== -1
-                        ? "opacity-75"
-                        : "text-blueGray-300")
+                        ? "text-blue-500 hover:text-blue-600"
+                        : "text-gray-700 hover:text-gray-500")
                     }
-                  ></i>{" "}
-                  Settings
-                </a>
-              </li>
-
-              <li className="items-center">
-                <a
-                  className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/tables") !== -1
-                      ? "text-lightBlue-500 hover:text-lightBlue-600"
-                      : "text-blueGray-700 hover:text-blueGray-500")
-                  }
-                  href="/admin/tables"
-                >
-                  <i
-                    className={
-                      "fas fa-table mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/tables") !== -1
-                        ? "opacity-75"
-                        : "text-blueGray-300")
-                    }
-                  ></i>{" "}
-                  Tables
-                </a>
-              </li>
-
-              <li className="items-center">
-                <a
-                  className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/maps") !== -1
-                      ? "text-lightBlue-500 hover:text-lightBlue-600"
-                      : "text-blueGray-700 hover:text-blueGray-500")
-                  }
-                  href="/admin/maps"
-                >
-                  <i
-                    className={
-                      "fas fa-map-marked mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/maps") !== -1
-                        ? "opacity-75"
-                        : "text-blueGray-300")
-                    }
-                  ></i>{" "}
-                  Maps
-                </a>
+                  >
+                    <i
+                      className={
+                        "fas fa-tools mr-2 text-sm " +
+                        (window.location.href.indexOf("/admin/settings") !== -1
+                          ? "opacity-75"
+                          : "text-gray-300")
+                      }
+                    ></i>{" "}
+                    Settings
+                  </a>
+                </Link>
               </li>
             </ul>
 
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Auth Layout Pages
+            <h6 className="md:min-w-full text-gray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+              Data Management
             </h6>
             {/* Navigation */}
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
-                <a
-                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  href="/auth/login"
-                >
-                  <i className="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>{" "}
-                  Login
-                </a>
+                <Link href="/admin/profiles">
+                  <a
+                    className={
+                      "text-xs uppercase py-3 font-bold block " +
+                      (window.location.href.indexOf("/admin/profiles") !== -1
+                        ? "text-blue-500 hover:text-blue-700"
+                        : "text-gray-700 hover:text-gray-500")
+                    }
+                  >
+                    <i
+                      className={
+                        "fas fa-table mr-2 text-sm " +
+                        (window.location.href.indexOf("/admin/profiles") !== -1
+                          ? "opacity-75"
+                          : "text-gray-300")
+                      }
+                    ></i>{" "}
+                    Profiles
+                  </a>
+                </Link>
               </li>
 
               <li className="items-center">
-                <a
-                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  href="/auth/register"
-                >
-                  <i className="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>{" "}
-                  Register
-                </a>
+                <Link href="/admin/users">
+                  <a
+                    className={
+                      "text-xs uppercase py-3 font-bold block " +
+                      (window.location.href.indexOf("/admin/users") !== -1
+                        ? "text-blue-500 hover:text-blue-700"
+                        : "text-gray-700 hover:text-gray-500")
+                    }
+                  >
+                    <i
+                      className={
+                        "fas fa-table mr-2 text-sm " +
+                        (window.location.href.indexOf("/admin/users") !== -1
+                          ? "opacity-75"
+                          : "text-gray-300")
+                      }
+                    ></i>{" "}
+                    Users
+                  </a>
+                </Link>
               </li>
             </ul>
 
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+            <h6 className="md:min-w-full text-gray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
               No Layout Pages
             </h6>
             {/* Navigation */}
@@ -216,20 +201,20 @@ export default function Sidebar() {
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
                 <a
-                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                  className="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold block"
                   href="/landing"
                 >
-                  <i className="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-newspaper text-gray-400 mr-2 text-sm"></i>{" "}
                   Landing Page
                 </a>
               </li>
 
               <li className="items-center">
                 <a
-                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                  className="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold block"
                   href="/profile"
                 >
-                  <i className="fas fa-user-circle text-blueGray-400 mr-2 text-sm"></i>{" "}
+                  <i className="fas fa-user-circle text-gray-400 mr-2 text-sm"></i>{" "}
                   Profile Page
                 </a>
               </li>
@@ -238,7 +223,7 @@ export default function Sidebar() {
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+            <h6 className="md:min-w-full text-gray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
               Documentation
             </h6>
             {/* Navigation */}
@@ -247,9 +232,9 @@ export default function Sidebar() {
                 <a
                   href="https://www.creative-tim.com/learning-lab/tailwind/react/colors/notus"
                   target="_blank"
-                  className="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold"
+                  className="text-gray-700 hover:text-gray-500 text-sm block mb-4 no-underline font-semibold"
                 >
-                  <i className="fas fa-paint-brush mr-2 text-blueGray-300 text-base"></i>
+                  <i className="fas fa-paint-brush mr-2 text-gray-300 text-base"></i>
                   Styles
                 </a>
               </li>
@@ -258,9 +243,9 @@ export default function Sidebar() {
                 <a
                   href="https://www.creative-tim.com/learning-lab/tailwind/react/alerts/notus"
                   target="_blank"
-                  className="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold"
+                  className="text-gray-700 hover:text-gray-500 text-sm block mb-4 no-underline font-semibold"
                 >
-                  <i className="fab fa-css3-alt mr-2 text-blueGray-300 text-base"></i>
+                  <i className="fab fa-css3-alt mr-2 text-gray-300 text-base"></i>
                   CSS Components
                 </a>
               </li>
@@ -269,9 +254,9 @@ export default function Sidebar() {
                 <a
                   href="https://www.creative-tim.com/learning-lab/tailwind/angular/overview/notus"
                   target="_blank"
-                  className="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold"
+                  className="text-gray-700 hover:text-gray-500 text-sm block mb-4 no-underline font-semibold"
                 >
-                  <i className="fab fa-angular mr-2 text-blueGray-300 text-base"></i>
+                  <i className="fab fa-angular mr-2 text-gray-300 text-base"></i>
                   Angular
                 </a>
               </li>
@@ -280,9 +265,9 @@ export default function Sidebar() {
                 <a
                   href="https://www.creative-tim.com/learning-lab/tailwind/js/overview/notus"
                   target="_blank"
-                  className="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold"
+                  className="text-gray-700 hover:text-gray-500 text-sm block mb-4 no-underline font-semibold"
                 >
-                  <i className="fab fa-js-square mr-2 text-blueGray-300 text-base"></i>
+                  <i className="fab fa-js-square mr-2 text-gray-300 text-base"></i>
                   Javascript
                 </a>
               </li>
@@ -291,9 +276,9 @@ export default function Sidebar() {
                 <a
                   href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/overview/notus"
                   target="_blank"
-                  className="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold"
+                  className="text-gray-700 hover:text-gray-500 text-sm block mb-4 no-underline font-semibold"
                 >
-                  <i className="fab fa-react mr-2 text-blueGray-300 text-base"></i>
+                  <i className="fab fa-react mr-2 text-gray-300 text-base"></i>
                   NextJS
                 </a>
               </li>
@@ -302,9 +287,9 @@ export default function Sidebar() {
                 <a
                   href="https://www.creative-tim.com/learning-lab/tailwind/react/overview/notus"
                   target="_blank"
-                  className="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold"
+                  className="text-gray-700 hover:text-gray-500 text-sm block mb-4 no-underline font-semibold"
                 >
-                  <i className="fab fa-react mr-2 text-blueGray-300 text-base"></i>
+                  <i className="fab fa-react mr-2 text-gray-300 text-base"></i>
                   React
                 </a>
               </li>
@@ -313,9 +298,9 @@ export default function Sidebar() {
                 <a
                   href="https://www.creative-tim.com/learning-lab/tailwind/svelte/overview/notus"
                   target="_blank"
-                  className="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold"
+                  className="text-gray-700 hover:text-gray-500 text-sm block mb-4 no-underline font-semibold"
                 >
-                  <i className="fas fa-a mr-2 text-blueGray-300 text-base"></i>
+                  <i className="fas fa-a mr-2 text-gray-300 text-base"></i>
                   Svelte
                 </a>
               </li>
@@ -324,9 +309,9 @@ export default function Sidebar() {
                 <a
                   href="https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus"
                   target="_blank"
-                  className="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold"
+                  className="text-gray-700 hover:text-gray-500 text-sm block mb-4 no-underline font-semibold"
                 >
-                  <i className="fab fa-vuejs mr-2 text-blueGray-300 text-base"></i>
+                  <i className="fab fa-vuejs mr-2 text-gray-300 text-base"></i>
                   VueJS
                 </a>
               </li>

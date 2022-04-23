@@ -22,7 +22,7 @@ export default function HeaderStats() {
                   statSubtitle="TOTAL TRAFFIC"
                   statTitle={totalTrafficStat}
                   statArrow="up"
-                  statPercent="3.48"
+                  statPercent="0"
                   statPercentColor="text-emerald-500"
                   statDescripiron="Since yesterday"
                   statIconName="far fa-chart-bar"
@@ -31,10 +31,10 @@ export default function HeaderStats() {
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="NEW USERS"
+                  statSubtitle="USERS"
                   statTitle={userStat}
                   statArrow="down"
-                  statPercent="3.48"
+                  statPercent="0"
                   statPercentColor="text-red-500"
                   statDescripiron="Since yesterday"
                   statIconName="fas fa-chart-pie"
@@ -43,10 +43,10 @@ export default function HeaderStats() {
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="SALES"
+                  statSubtitle="INTERMEDIATE URL TRAFFIC"
                   statTitle={userStat}
                   statArrow="down"
-                  statPercent="1.10"
+                  statPercent="0"
                   statPercentColor="text-orange-500"
                   statDescripiron="Since yesterday"
                   statIconName="fas fa-users"
@@ -55,10 +55,10 @@ export default function HeaderStats() {
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="PERFORMANCE"
+                  statSubtitle="PROFILES"
                   statTitle={userStat}
                   statArrow="up"
-                  statPercent="12"
+                  statPercent="0"
                   statPercentColor="text-emerald-500"
                   statDescripiron="Since yesterday"
                   statIconName="fas fa-percent"
