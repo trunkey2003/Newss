@@ -8,6 +8,7 @@ import ProfilesIcon from '@mui/icons-material/FolderShared';
 import UsersIcon from '@mui/icons-material/People';
 import TotalTrafficIcon from '@mui/icons-material/SsidChart';
 import IntermediateTrafficIcon from '@mui/icons-material/Timeline';
+import ComputerIcon from '@mui/icons-material/Computer';
 
 import NotificationDropdown from "./NotificationDropdown";
 import UserDropdown from "./UserDropdown";
@@ -104,7 +105,7 @@ export default function Sidebar() {
                         : "text-gray-700 hover:text-gray-500")
                     }
                   >
-                    <DashboardIcon fontSize="small"/>
+                    <DashboardIcon fontSize="small" />
                     <span className="ml-1">Dashboard</span>
                   </a>
                 </Link>
@@ -128,7 +129,7 @@ export default function Sidebar() {
                           : "text-gray-300")
                       }
                     ></i>{" "}
-                    <SettingsIcon/>
+                    <SettingsIcon />
                     <span className="ml-1">Settings</span>
                   </a>
                 </Link>
@@ -154,7 +155,7 @@ export default function Sidebar() {
                         : "text-gray-700 hover:text-gray-500")
                     }
                   >
-                    <ProfilesIcon/>
+                    <ProfilesIcon />
                     <span className="ml-1">Profiles</span>
                   </a>
                 </Link>
@@ -170,8 +171,24 @@ export default function Sidebar() {
                         : "text-gray-700 hover:text-gray-500")
                     }
                   >
-                    <UsersIcon/>
+                    <UsersIcon />
                     <span className="ml-1">Users  </span>
+                  </a>
+                </Link>
+              </li>
+
+              <li className="items-center">
+                <Link href="/admin/computers">
+                  <a
+                    className={
+                      "text-xs uppercase py-3 font-bold block flex items-center " +
+                      (window.location.href.indexOf("/admin/computers") !== -1
+                        ? "text-blue-500 hover:text-blue-700"
+                        : "text-gray-700 hover:text-gray-500")
+                    }
+                  >
+                    <ComputerIcon/>
+                    <span className="ml-1">Computers  </span>
                   </a>
                 </Link>
               </li>
@@ -187,23 +204,26 @@ export default function Sidebar() {
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
-                <a
-                  className="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold flex items-center"
-                  href="/landing"
-                >
-                  <TotalTrafficIcon/>
-                  <span className="ml-1">TOTAL</span>
-                </a>
+                <Link href="/admin/traffic/total">
+                  <a
+                    className="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold flex items-center"
+                  >
+                    <TotalTrafficIcon />
+                    <span className="ml-1">TOTAL</span>
+                  </a>
+                </Link>
               </li>
 
               <li className="items-center">
-                <a
-                  className="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold block"
-                  href="/profile"
-                >
-                  <IntermediateTrafficIcon/>
-                  <span className="ml-1">INTERMEDIATE URL</span>
-                </a>
+                <Link href="/admin/traffic/intermediate-url">
+                  <a
+                    className="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold block"
+                    href="/profile"
+                  >
+                    <IntermediateTrafficIcon />
+                    <span className="ml-1">INTERMEDIATE URL</span>
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>

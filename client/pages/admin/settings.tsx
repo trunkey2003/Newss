@@ -5,7 +5,7 @@ type Props = {}
 
 export default function Settings({}: Props) {
   return (
-    <div>Settings</div>
+    <div className='w-full pt-36 text-center text-4xl font-bold'>Settings</div>
   )
 }
 

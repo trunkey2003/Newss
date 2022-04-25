@@ -50,6 +50,7 @@ export default function SignInModal({ showSignIn, handleShowSignIn }: Props) {
       setCookieClient('userName',  data.userName, data.maxAge);
       setCookieClient('avatar', data.avatar, data.maxAge);
       messageContext?.handleAddMessage({ type: 'success', title: 'Đăng nhập thành công', content: 'Đăng nhập dưới tài khoản ' + userName + ' thành công' });
+      window.location.href = window.location.origin;
     }).catch((err : any) => {
       console.log(err);
       if (err.response?.status == 409)

@@ -46,7 +46,6 @@ class userController{
             res.status(503).send({ message: "Đăng ký của bạn không được hoàn thành" });
         }
     }
-
     
 }
 

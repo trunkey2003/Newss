@@ -72,6 +72,15 @@ class authController{
                 res.status(503).send(false);
             })
     }
+
+    clearCookie(req, res, next) {
+        res.cookie('token', "none", {
+            sameSite: 'none',
+            secure: true,
+            httpOnly: true,
+            maxAge: 0,
+        }).status(200).send("Cookie cleared");
+    }
 }
 
 

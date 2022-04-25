@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CardStatsType } from "../../../models/CardStatsType";
+import { CardStatsType } from "../../models/CardStatsType";
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
 export default function CardStats({

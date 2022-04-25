@@ -1,11 +1,16 @@
 import React from 'react'
+import Footer from '../admin/FooterAdmin'
+import Nav from '../common/Nav'
 
-export interface IAdmin{
-    
-}
 
-export function Layout({}: IAdmin) {
+export default function Layout({ children }: any) {
   return (
-    <div>Admin</div>
+    <>
+      <Nav/>
+      <main className='min-h-screen'>
+          {children}
+        </main>
+      <Footer />
+    </>
   )
 }

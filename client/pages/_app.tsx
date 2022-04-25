@@ -9,6 +9,8 @@ import { MessageType } from '../models/Message';
 import { useState, useEffect, createContext } from 'react';
 import { useRouter } from 'next/router';
 import Unauthorized from '../components/common/Unauthorized';
+import ConfirmModalContext from '../components/common/ConfirmModal';
+import LoadingFixed from '../components/common/LoadingFixed';
 
 type MessageContextType = {
   handleAddMessage : (msg: MessageType) => void
@@ -54,7 +56,7 @@ export default function MyApp({ Component, pageProps }: any) {
   }, []);
 
   if (authAdmin === false) return <Unauthorized/>
-  if (loading) return <div></div>
+  if (loading) return <LoadingFixed/>
 
   const handleCloseMessage = (index: Number) => {
     let _messages = messages;
@@ -70,14 +72,11 @@ export default function MyApp({ Component, pageProps }: any) {
     handleAddMessage: handleAddMessage
   } 
 
-  return getLayout(
+  return (
     <MessageContext.Provider value={value}>
-      {/* <Layout> */}
-        <AlertBoxWrapper>
-          {messages.map((message, index) => <AlertBox key={index} message={message} handleCloseMessage={handleCloseMessage} index={index} />)}
-        </AlertBoxWrapper>
-        <Component {...pageProps} />
-      {/* </Layout> */}
+        {getLayout(<><AlertBoxWrapper>
+            {messages.map((message, index) => <AlertBox key={index} message={message} handleCloseMessage={handleCloseMessage} index={index} />)}
+          </AlertBoxWrapper><Component {...pageProps} /></>)}
     </MessageContext.Provider>
   )
 }

@@ -43,6 +43,7 @@ export default function SignUpModal({ showSignUp, handleShowSignUp }: Props) {
 
     if (confirmPassword != password) {
       const content = "Mật khẩu xác nhận không khớp"
+      console.log(messageContext);
       messageContext?.handleAddMessage({type : 'fail', title: 'Đăng ký thất bại', content: content});
       return;
     }

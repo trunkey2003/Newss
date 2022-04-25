@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import LoadingFixed from '../../components/common/LoadingFixed';
 import GetLayoutAdmin from '../../components/function/GetLayoutAdmin'
-import HeaderStats from '../../components/common/admin/HeaderStats';
-import Dashboard from '../../components/common/admin/Dashboard';
+import HeaderStats from '../../components/admin/HeaderStats';
+import Dashboard from '../../components/admin/Dashboard';
 
 type Props = {}
 

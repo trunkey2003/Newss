@@ -8,7 +8,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import PasswordIcon from '@mui/icons-material/Password';
 import AdminIcon from '@mui/icons-material/AdminPanelSettings';
 import ImageIcon from '@mui/icons-material/Image';
-import CardStats from '../../components/common/admin/CardStats';
+import CardStats from '../../components/admin/CardStats';
 import UsersIcon from '@mui/icons-material/People';
 
 type Props = {}

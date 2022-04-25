@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import Loading from '../../../components/common/Loading';
 import GetLayoutAdmin from '../../../components/function/GetLayoutAdmin';
 import LockIcon from '@mui/icons-material/Lock';
-import CardStats from '../../../components/common/admin/CardStats';
+import CardStats from '../../../components/admin/CardStats';
 import ComputerIcon from '@mui/icons-material/Computer';
 
 type Props = {}
