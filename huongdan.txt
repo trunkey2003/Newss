@@ -1,3 +1,0 @@
-Tạo hồ sơ: /ho-so/tao-ho-so
-Xem tất cả hồ sơ admin: /ho-so
-Xem hồ sơ txt: /api/ho-so/[id-ho-so]
