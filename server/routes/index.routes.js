@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const siteController = require('../app/controllers/site.controller');
-const profileController = require('../app/controllers/profile.controller');
-const userController = require('../app/controllers/user.controller');
-const authController = require('../app/middlewares/auth.controller');
-const trackingController = require('../app/controllers/tracking.controller');
-const computerController = require('../app/controllers/computer.controller');
+const profileController = require('../src/controllers/profile.controller');
+const userController = require('../src/controllers/user.controller');
+const authController = require('../src/middlewares/auth.controller');
+const trackingController = require('../src/controllers/tracking.controller');
+const computerController = require('../src/controllers/computer.controller');
 
 
 /* GET home page. */
